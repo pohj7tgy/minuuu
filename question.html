@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Question 💝</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="center">
+
+<img src="teddy-question.gif" class="teddy">
+
+<h1>Minnu jii… 🌹</h1>
+
+<p class="msg">
+Will you be my Valentine? 💝
+</p>
+
+<button class="btn yes" onclick="next()">YES 💖</button>
+<button class="btn no" id="no">NO ❌</button>
+
+<script>
+function next(){
+  window.location.href="letter.html";
+}
+
+const no = document.getElementById("no");
+no.addEventListener("mouseover", move);
+no.addEventListener("touchstart", move);
+
+function move(){
+  no.style.left = Math.random()*80 + "vw";
+  no.style.top  = Math.random()*80 + "vh";
+}
+</script>
+
+</body>
+</html>
