@@ -1,32 +1,39 @@
-/* NO BUTTON ESCAPE */
+/* =========================
+   YES BUTTON NAVIGATION
+========================= */
+function goYes() {
+  window.location.href = "letter.html";
+}
+
+/* =========================
+   NO BUTTON ESCAPE
+========================= */
 const noBtn = document.getElementById("noBtn");
+
 if (noBtn) {
   noBtn.addEventListener("mouseover", moveNo);
   noBtn.addEventListener("touchstart", moveNo);
 }
 
 function moveNo() {
-  const box = document.querySelector(".button-box");
-  const maxX = box.clientWidth - noBtn.offsetWidth;
-  const maxY = box.clientHeight - noBtn.offsetHeight;
-  noBtn.style.left = Math.random() * maxX + "px";
-  noBtn.style.top = Math.random() * maxY + "px";
+  const x = Math.random() * 220 - 110;
+  const y = Math.random() * 140 - 70;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-function goYes() {
-  window.location.href = "letter.html";
-}
-
-/* TYPEWRITER TEXT */
+/* =========================
+   TYPEWRITER EFFECT
+========================= */
+const letter = document.getElementById("letterText");
 const text = `From the day I met you,
 my heart stopped searching…
 
 I choose you.
 Always. 💖`;
 
-const letter = document.getElementById("letterText");
 let i = 0;
 if (letter) {
+  letter.innerHTML = "";
   function type() {
     if (i < text.length) {
       letter.innerHTML += text.charAt(i);
@@ -37,10 +44,14 @@ if (letter) {
   type();
 }
 
-/* SLIDESHOW */
+/* =========================
+   SLIDESHOW
+========================= */
 const slides = document.querySelectorAll(".slide");
 let current = 0;
-if (slides.length) {
+
+if (slides.length > 1) {
+  slides[0].classList.add("active");
   setInterval(() => {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
@@ -48,33 +59,20 @@ if (slides.length) {
   }, 3000);
 }
 
-/* HEARTBEAT BUTTON */
-function heartbeat() {
-  document.getElementById("heartMsg").innerText =
-    "💓 Lub-dub… Lub-dub… this heart beats only for you 💖";
-}
-// YES button
-function goYes() {
-  window.location.href = "letter.html";
-}
-
-// NO button escape
-const noBtn = document.getElementById("noBtn");
-
-noBtn.addEventListener("mouseover", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
-
-function moveNo() {
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 120 - 60;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-}
-
+/* =========================
+   HEART BEAT (FOREVER PAGE)
+========================= */
 function feelHeart() {
   const teddy = document.getElementById("heartTeddy");
+  const msg = document.getElementById("heartMsg");
 
-  // restart animation every tap
-  teddy.classList.remove("beat");
-  void teddy.offsetWidth;
-  teddy.classList.add("beat");
+  if (teddy) {
+    teddy.classList.remove("beat");
+    void teddy.offsetWidth; // restart animation
+    teddy.classList.add("beat");
+  }
+
+  if (msg) {
+    msg.innerText = "💓 Lub-dub… Lub-dub… this heart beats only for you 💖";
+  }
 }
