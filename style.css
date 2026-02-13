@@ -72,24 +72,31 @@ body {
 
 /* SLIDESHOW */
 .slideshow {
-  width: 95vw;
-  max-width: 520px;
-  height: 520px;
-  margin: 30px auto;
+  width: 100vw;          /* full screen width */
+  max-width: none;       /* remove limit */
+  height: auto;          /* 🔥 IMPORTANT */
+  aspect-ratio: 3 / 4;   /* perfect for portrait photos */
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
-  border-radius: 25px;
-  box-shadow: 0 0 40px rgba(255,105,180,0.7);
+  background: #000;
 }
 
 .slide {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* ✅ SHOW FULL PHOTO */
-  background: #000;      /* black fill instead of white */
+  object-fit: contain;   /* show FULL photo */
+  background: #000;
+  opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
+
+.slide.active {
+  opacity: 1;
+}
+  
 
 .slide.active {
   opacity: 1;
