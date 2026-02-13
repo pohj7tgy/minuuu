@@ -1,9 +1,13 @@
-/* YES BUTTON */
+/* ======================
+   YES BUTTON
+====================== */
 function goYes() {
   window.location.href = "letter.html";
 }
 
-/* NO BUTTON ESCAPE */
+/* ======================
+   NO BUTTON ESCAPE
+====================== */
 const noBtn = document.getElementById("noBtn");
 
 if (noBtn) {
@@ -12,13 +16,23 @@ if (noBtn) {
 }
 
 function moveNo() {
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 120 - 60;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  const box = noBtn.parentElement;
+
+  const maxX = box.clientWidth - noBtn.offsetWidth;
+  const maxY = box.clientHeight - noBtn.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 }
 
-/* TYPEWRITER (LETTER PAGE) */
+/* ======================
+   TYPEWRITER (LETTER PAGE)
+====================== */
 const letter = document.getElementById("letterText");
+
 const text = `From the day I met you,
 my heart stopped searching…
 
@@ -26,7 +40,9 @@ I choose you.
 Always. 💖`;
 
 let i = 0;
+
 if (letter) {
+  letter.innerHTML = "";
   function type() {
     if (i < text.length) {
       letter.innerHTML += text.charAt(i);
@@ -37,11 +53,15 @@ if (letter) {
   type();
 }
 
-/* SLIDESHOW */
+/* ======================
+   SLIDESHOW (MEMORIES)
+====================== */
 const slides = document.querySelectorAll(".slide");
 let current = 0;
 
-if (slides.length) {
+if (slides.length > 0) {
+  slides[0].classList.add("active");
+
   setInterval(() => {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
@@ -49,12 +69,14 @@ if (slides.length) {
   }, 3000);
 }
 
-/* HEART BEAT BUTTON */
+/* ======================
+   HEART BEAT BUTTON
+====================== */
 function feelHeart() {
   const teddy = document.getElementById("heartTeddy");
   if (!teddy) return;
 
   teddy.classList.remove("beat");
-  void teddy.offsetWidth; // restart animation
+  void teddy.offsetWidth; // force restart
   teddy.classList.add("beat");
 }
