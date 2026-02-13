@@ -4,34 +4,19 @@
   <title>My Question 💝</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="center">
 
-<div class="hero center">
-  <img src="teddy-hands.gif" class="teddy floating">
+  <img src="teddy-hands.gif" class="teddy" id="teddy">
 
-  <h1>Minuu jii… 🌹</h1>
+  <div class="typewriter">
+    Minuu jii…  
+    Will you be my Valentine? 🌹💝
+  </div>
 
-  <p class="msg">
-    Will you be my Valentine? 💝
-  </p>
+  <button class="btn yes" onclick="location.href='letter.html'">YES 💖</button>
+  <button class="btn no" id="noBtn">NO ❌</button>
 
-  <button class="btn yes" onclick="go()">YES 💖</button>
-  <button class="btn no" id="no">NO ❌</button>
-</div>
-
-<script>
-function go(){
-  window.location.href="letter.html";
-}
-
-const noBtn = document.getElementById("no");
-function move(){
-  noBtn.style.left = Math.random()*80 + "vw";
-  noBtn.style.top  = Math.random()*80 + "vh";
-}
-noBtn.addEventListener("mouseover", move);
-noBtn.addEventListener("touchstart", move);
-</script>
-
+  <audio id="music" src="music.m4a" autoplay loop></audio>
+  <script src="script.js"></script>
 </body>
 </html>
