@@ -1,39 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Letter 💌</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>Love Letter 💕</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="center">
 
-<div class="hero">
-  <img src="./teddy-hands.gif" class="teddy floating">
+  <img src="teddy-hug.gif" class="teddy big" id="teddy">
 
-  <h1>My Love Letter 💞</h1>
-
-  <div class="msg type" id="typeText">
-    <!-- typing text appears here -->
+  <div class="typewriter">
+    From the day I met you,  
+    my heart stopped searching…  
+    I choose you. Always. 💞
   </div>
 
-  <!-- CLICK TO START MUSIC -->
-  <button class="btn yes" onclick="playMusic()">
-    Tap to Feel My Heart 💗
-  </button>
+  <a href="memories.html" class="btn yes">Our Memories 💗</a>
 
-  <audio id="bgMusic" loop>
-    <source src="./music.mp3" type="audio/mpeg">
-  </audio>
-
-  <a href="memories.html" class="btn yes">Our Memories 💖</a>
-</div>
-
-<script src="./script.js"></script>
-
-<script>
-function playMusic(){
-  document.getElementById("bgMusic").play();
-}
-</script>
-
+  <audio id="music" src="music.m4a" autoplay loop></audio>
+  <script src="script.js"></script>
 </body>
 </html>
