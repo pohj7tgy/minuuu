@@ -1,37 +1,31 @@
-// Typing letter
+/* TYPEWRITER */
 const text = `From the day I met you,
-my heart stopped searching…
+my heart stopped searching.
 
-You became my calm,
-my smile,
-my forever 💕
+Every smile of yours,
+every moment with you,
+feels like magic.
 
-I don’t need perfect moments,
-I just need YOU in all of them 💖`;
+I don’t want perfection,
+I just want YOU.
+Forever 💖`;
 
 let i = 0;
-const speed = 50;
-const target = document.getElementById("typeText");
-
-if (target) {
-  function type() {
-    if (i < text.length) {
-      target.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    }
+function typeText(){
+  if(i < text.length){
+    document.getElementById("typeText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeText, 45);
   }
-  type();
 }
+if(document.getElementById("typeText")) typeText();
 
-// Slideshow
+/* SLIDESHOW */
 let slides = document.querySelectorAll(".slide");
-let index = 0;
+let current = 0;
 
-if (slides.length > 0) {
-  setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-  }, 3000);
-}
+setInterval(()=>{
+  slides[current].classList.remove("active");
+  current = (current + 1) % slides.length;
+  slides[current].classList.add("active");
+}, 3000);
