@@ -69,3 +69,12 @@ function moveNo() {
   const y = Math.random() * 120 - 60;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
+
+function feelHeart() {
+  const teddy = document.getElementById("heartTeddy");
+
+  // restart animation every tap
+  teddy.classList.remove("beat");
+  void teddy.offsetWidth;
+  teddy.classList.add("beat");
+}
