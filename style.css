@@ -72,9 +72,9 @@ body {
 
 /* SLIDESHOW */
 .slideshow {
-  width: 90vw;
-  max-width: 420px;
-  height: 420px;
+  width: 95vw;
+  max-width: 520px;
+  height: 520px;
   margin: 30px auto;
   position: relative;
   overflow: hidden;
