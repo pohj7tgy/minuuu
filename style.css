@@ -1,117 +1,91 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
+  margin: 0;
   background: radial-gradient(circle at top, #1a001f, #000);
   color: #fff;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Special Elite', monospace;
   text-align: center;
+}
+
+.center {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* COMMON PAGE CONTAINER */
-.hero {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: auto;
+.typewriter {
+  font-size: 26px;
+  max-width: 90%;
+  margin: 30px auto;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #ff4da6;
+  animation: typing 4s steps(40,end), blink .7s infinite;
 }
 
-/* HEADINGS */
-h1 {
-  font-size: 36px;
-  color: #ff4da6;
-  text-shadow: 0 0 25px #ff4da6;
-  margin-bottom: 20px;
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink {
+  50% { border-color: transparent }
 }
 
-/* TEXT */
-.msg {
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.9;
-  margin: 25px auto;
-  max-width: 900px;
-  color: #ffd9ec;
-}
-
-/* BUTTONS */
+/* 3D BUTTONS */
 .btn {
-  padding: 16px 40px;
+  padding: 18px 50px;
   font-size: 20px;
   border-radius: 50px;
-  border: none;
+  border: 2px solid black;
   cursor: pointer;
-  margin: 20px 10px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: linear-gradient(145deg,#fff,#e6e6e6);
+  color: black;
+  box-shadow: 0 10px 0 black, 0 15px 25px rgba(0,0,0,.6);
+  margin: 20px auto;
+  display: inline-block;
+}
+.btn:active {
+  transform: translateY(8px);
+  box-shadow: 0 4px 0 black;
 }
 
-/* 3D BUTTON EFFECT */
-.yes {
-  background: linear-gradient(145deg,#ff5fa2,#ff2f7d);
-  color: white;
-  box-shadow: 0 10px 0 #b91c5c;
+.yes { background: linear-gradient(145deg,#fff,#ffd6ea); }
+.no  { background: linear-gradient(145deg,#444,#111); color: white; position: absolute; }
+
+/* TEDDY */
+.teddy {
+  width: 220px;
+  margin: 20px auto;
+  animation: float 4s ease-in-out infinite;
+}
+.big { width: 260px; }
+
+@keyframes float {
+  50% { transform: translateY(-15px); }
 }
 
-.yes:active {
-  transform: translateY(6px);
-  box-shadow: 0 4px 0 #b91c5c;
-}
-
-/* NO BUTTON FIXED */
-.question-box {
-  position: relative;
-  margin-top: 40px;
-}
-
-.no {
-  background: #333;
-  color: white;
-  position: relative;
-}
-
-/* SLIDESHOW – FULL & BIG */
+/* SLIDESHOW */
 .slideshow {
-  width: 90%;
-  max-width: 900px;
-  height: 420px;
-  margin: 40px auto;
+  width: 95vw;
+  max-width: 520px;
+  height: 520px;
+  margin: 30px auto;
   position: relative;
   overflow: hidden;
-  border-radius: 30px;
-  box-shadow: 0 0 40px pink;
+  border-radius: 20px;
+  box-shadow: 0 0 30px pink;
 }
-
 .slide {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transition: opacity 1.5s;
 }
+.slide.active { opacity: 1; }
 
-.slide.active {
-  opacity: 1;
-}
-
-/* TEDDY GIFS – BIG & CUTE */
-.teddy {
-  width: 260px;
-  margin: 25px auto;
-  display: block;
-  filter: drop-shadow(0 0 25px pink);
-}
-
-.teddy.big {
-  width: 320px;
-}
-
-/* FINAL TEXT */
 .end {
-  margin-top: 30px;
   font-size: 24px;
   color: #ffb3d9;
 }
