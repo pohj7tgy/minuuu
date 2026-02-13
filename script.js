@@ -1,31 +1,50 @@
-/* TYPEWRITER */
-const text = `From the day I met you,
-my heart stopped searching.
-
-Every smile of yours,
-every moment with you,
-feels like magic.
-
-I don’t want perfection,
-I just want YOU.
-Forever 💖`;
-
-let i = 0;
-function typeText(){
-  if(i < text.length){
-    document.getElementById("typeText").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeText, 45);
-  }
+/* NO BUTTON ESCAPE */
+const noBtn = document.getElementById("noBtn");
+if (noBtn) {
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("touchstart", moveNo);
 }
-if(document.getElementById("typeText")) typeText();
+function moveNo() {
+  noBtn.style.left = Math.random()*70 + "vw";
+  noBtn.style.top = Math.random()*70 + "vh";
+}
 
 /* SLIDESHOW */
 let slides = document.querySelectorAll(".slide");
-let current = 0;
+let index = 0;
+if (slides.length > 0) {
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3000);
+}
 
-setInterval(()=>{
-  slides[current].classList.remove("active");
-  current = (current + 1) % slides.length;
-  slides[current].classList.add("active");
-}, 3000);
+/* MUSIC REACTIVE TEDDY */
+const audio = document.getElementById("music");
+const teddy = document.getElementById("teddy");
+
+if (audio && teddy) {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  const ctx = new AudioContext();
+  const analyser = ctx.createAnalyser();
+  const source = ctx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(ctx.destination);
+  analyser.fftSize = 256;
+
+  const data = new Uint8Array(analyser.frequencyBinCount);
+
+  document.body.addEventListener("click", () => {
+    if (ctx.state === "suspended") ctx.resume();
+    audio.play();
+  });
+
+  function beat() {
+    analyser.getByteFrequencyData(data);
+    let avg = data.reduce((a,b)=>a+b)/data.length;
+    teddy.style.transform = avg > 70 ? "scale(1.15)" : "scale(1)";
+    requestAnimationFrame(beat);
+  }
+  beat();
+                          }
