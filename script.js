@@ -53,3 +53,19 @@ function heartbeat() {
   document.getElementById("heartMsg").innerText =
     "💓 Lub-dub… Lub-dub… this heart beats only for you 💖";
 }
+// YES button
+function goYes() {
+  window.location.href = "letter.html";
+}
+
+// NO button escape
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+function moveNo() {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 120 - 60;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
