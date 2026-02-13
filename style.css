@@ -21,14 +21,14 @@ body {
   padding: 25px 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* no huge gaps */
+  justify-content: center; /* balanced spacing */
   align-items: center;
   gap: 18px;
 }
 
 /* HEADINGS */
 h1 {
-  font-size: 34px;
+  font-size: clamp(28px, 6vw, 36px);
   color: #ff4da6;
   text-shadow: 0 0 20px #ff4da6;
 }
@@ -46,7 +46,7 @@ h1 {
 /* 3D BUTTONS */
 .btn {
   position: relative;
-  z-index: 10; /* important for tap */
+  z-index: 10; /* above slides */
   padding: 22px 60px;
   font-size: 24px;
   font-weight: bold;
@@ -67,12 +67,11 @@ h1 {
   box-shadow: 0 4px 0 #000;
 }
 
-/* YES BUTTON */
+/* YES / NO BUTTONS */
 .yes {
   background: linear-gradient(145deg, #fff, #ffd6ea);
 }
 
-/* NO BUTTON */
 .no {
   background: linear-gradient(145deg, #444, #111);
   color: #fff;
@@ -90,12 +89,6 @@ h1 {
   display: block;
   filter: drop-shadow(0 0 30px pink);
   animation: float 4s ease-in-out infinite;
-  transition: transform 0.15s ease, filter 0.15s ease;
-}
-
-/* BIG TEDDY (optional) */
-.teddy.big {
-  width: 300px;
 }
 
 /* FLOAT ANIMATION */
@@ -105,57 +98,47 @@ h1 {
   }
 }
 
-/* SLIDESHOW */
+/* SLIDESHOW FIX */
 .slideshow {
   width: 92vw;
-  max-width: 420px;        /* controlled romantic size */
-  height: 420px;
+  max-width: 480px;
+  height: auto;           /* 🔥 auto height for correct aspect ratio */
   margin: 25px auto;
   position: relative;
   overflow: hidden;
   border-radius: 24px;
   box-shadow: 0 0 35px rgba(255,105,180,0.6);
   background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
 }
 
-/* SLIDE IMAGE */
-.slideshow {
-  width: 92vw;
-  max-width: 480px;      /* moderate size */
-  height: auto;          /* natural height */
-  margin: 25px auto;
-  position: relative;
-  background: #000;
-  border-radius: 24px;
-  box-shadow: 0 0 35px rgba(255,105,180,0.6);
-  overflow: hidden;
-  display: flex;
-  align-items: center;   /* center images vertically */
-  justify-content: center; /* center horizontally */
-}
-
 .slide {
+  position: relative;      /* relative, not absolute */
   width: 100%;
-  height: auto;          /* show full image */
-  object-fit: contain;    /* contain shows full image w/o crop */ 1
+  height: auto;
+  object-fit: contain;     /* show full image */
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
+  background: #000;
 }
 
 .slide.active {
   opacity: 1;
 }
 
-/* FINAL PAGE TEXT */
+/* END TEXT */
 .end {
-  font-size: 28px;
+  font-size: clamp(24px, 5vw, 28px);
   color: #ffb3d9;
   margin-top: 25px;
 }
 
 /* LINKS AS BUTTONS */
-.btn {
-  position: relative;
-  z-index: 5;  /* button stays above slideshow */
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+  z-index: 10;
 }
