@@ -72,11 +72,8 @@ body {
 
 /* SLIDESHOW */
 .slideshow {
-  width: 100vw;          /* full screen width */
-  max-width: none;       /* remove limit */
-  height: auto;          /* 🔥 IMPORTANT */
-  aspect-ratio: 3 / 4;   /* perfect for portrait photos */
-  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;          /* FULL SCREEN HEIGHT */
   position: relative;
   overflow: hidden;
   background: #000;
@@ -87,16 +84,10 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* show FULL photo */
-  background: #000;
+  object-fit: cover;      /* 🔥 THIS FIXES EVERYTHING */
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
-
-.slide.active {
-  opacity: 1;
-}
-  
 
 .slide.active {
   opacity: 1;
