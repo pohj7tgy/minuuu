@@ -1,74 +1,38 @@
-/* TYPEWRITER EFFECT */
-const el = document.getElementById("typeText");
-if (el) {
-  const text = el.dataset.text;
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      el.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, 45);
-    }
+// ------------------------
+// TYPEWRITER EFFECT (Optional if you want messages under slide)
+const text = `Our precious moments together 💖
+Laughing, hugging, loving... 
+Every memory is my treasure 💕`;
+
+let i = 0;
+function typeText() {
+  const msg = document.querySelector(".msg");
+  if (!msg) return;
+  if (i < text.length) {
+    msg.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeText, 50);
   }
-  type();
 }
+typeText();
 
-/* NO BUTTON ESCAPE */
-const noBtn = document.getElementById("noBtn");
-if (noBtn) {
-  noBtn.addEventListener("mouseover", moveNo);
-  noBtn.addEventListener("touchstart", moveNo);
-}
-function moveNo() {
-  noBtn.style.left = Math.random() * 70 + "vw";
-  noBtn.style.top = Math.random() * 70 + "vh";
-}
-
-/* SLIDESHOW */
+// ------------------------
+// SLIDESHOW LOGIC
 let slides = document.querySelectorAll(".slide");
-let index = 0;
-if (slides.length > 0) {
-  setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-  }, 3000);
-}
+let currentSlide = 0;
 
-/* MUSIC + TEDDY REACT */
-const audio = document.getElementById("music");
+setInterval(() => {
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
+}, 3000); // 3s per slide
+
+// ------------------------
+// OPTIONAL: floating teddy reacts slightly to hover
 const teddy = document.getElementById("teddy");
-const startBtn = document.getElementById("startMusic");
-
-if (audio && teddy && startBtn) {
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  const ctx = new AudioContext();
-  const analyser = ctx.createAnalyser();
-  const source = ctx.createMediaElementSource(audio);
-
-  source.connect(analyser);
-  analyser.connect(ctx.destination);
-  analyser.fftSize = 256;
-
-  const data = new Uint8Array(analyser.frequencyBinCount);
-
-  startBtn.addEventListener("click", () => {
-    ctx.resume();
-    audio.play();
-    startBtn.style.display = "none";
-    animate();
-  });
-
-  function animate() {
-    analyser.getByteFrequencyData(data);
-    let avg = data.reduce((a,b)=>a+b) / data.length;
-    if (avg > 70) {
-      teddy.style.transform = "scale(1.18)";
-      teddy.style.filter = "drop-shadow(0 0 50px #ff4da6)";
-    } else {
-      teddy.style.transform = "scale(1)";
-      teddy.style.filter = "drop-shadow(0 0 30px pink)";
-    }
-    requestAnimationFrame(animate);
-  }
-        }
+teddy.addEventListener("mouseover", () => {
+  teddy.style.transform = "scale(1.05)";
+});
+teddy.addEventListener("mouseout", () => {
+  teddy.style.transform = "scale(1)";
+});
