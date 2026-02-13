@@ -1,3 +1,18 @@
+/* TYPEWRITER EFFECT */
+const el = document.getElementById("typeText");
+if (el) {
+  const text = el.dataset.text;
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 45);
+    }
+  }
+  type();
+}
+
 /* NO BUTTON ESCAPE */
 const noBtn = document.getElementById("noBtn");
 if (noBtn) {
@@ -5,8 +20,8 @@ if (noBtn) {
   noBtn.addEventListener("touchstart", moveNo);
 }
 function moveNo() {
-  noBtn.style.left = Math.random()*70 + "vw";
-  noBtn.style.top = Math.random()*70 + "vh";
+  noBtn.style.left = Math.random() * 70 + "vw";
+  noBtn.style.top = Math.random() * 70 + "vh";
 }
 
 /* SLIDESHOW */
@@ -20,31 +35,40 @@ if (slides.length > 0) {
   }, 3000);
 }
 
-/* MUSIC REACTIVE TEDDY */
+/* MUSIC + TEDDY REACT */
 const audio = document.getElementById("music");
 const teddy = document.getElementById("teddy");
+const startBtn = document.getElementById("startMusic");
 
-if (audio && teddy) {
+if (audio && teddy && startBtn) {
   const AudioContext = window.AudioContext || window.webkitAudioContext;
   const ctx = new AudioContext();
   const analyser = ctx.createAnalyser();
   const source = ctx.createMediaElementSource(audio);
+
   source.connect(analyser);
   analyser.connect(ctx.destination);
   analyser.fftSize = 256;
 
   const data = new Uint8Array(analyser.frequencyBinCount);
 
-  document.body.addEventListener("click", () => {
-    if (ctx.state === "suspended") ctx.resume();
+  startBtn.addEventListener("click", () => {
+    ctx.resume();
     audio.play();
+    startBtn.style.display = "none";
+    animate();
   });
 
-  function beat() {
+  function animate() {
     analyser.getByteFrequencyData(data);
-    let avg = data.reduce((a,b)=>a+b)/data.length;
-    teddy.style.transform = avg > 70 ? "scale(1.15)" : "scale(1)";
-    requestAnimationFrame(beat);
+    let avg = data.reduce((a,b)=>a+b) / data.length;
+    if (avg > 70) {
+      teddy.style.transform = "scale(1.18)";
+      teddy.style.filter = "drop-shadow(0 0 50px #ff4da6)";
+    } else {
+      teddy.style.transform = "scale(1)";
+      teddy.style.filter = "drop-shadow(0 0 30px pink)";
+    }
+    requestAnimationFrame(animate);
   }
-  beat();
-                          }
+        }
