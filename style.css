@@ -89,33 +89,30 @@ h1 {
   }
 }
 
-/* SLIDESHOW */
+/* SLIDESHOW – FIXED & CLEAN */
 .slideshow {
-  width: 92vw;
-  max-width: 500px;
-  aspect-ratio: 4 / 5;
-  margin: 25px auto;
+  width: 94vw;
+  max-width: 520px;
+  height: 70vh;              /* FULL visual height */
+  max-height: 680px;
+  margin: 20px auto;
   position: relative;
   overflow: hidden;
-  border-radius: 24px;
-  box-shadow: 0 0 40px rgba(255,77,166,0.6);
+  border-radius: 26px;
   background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 0 40px rgba(255, 77, 166, 0.6);
   z-index: 1;
 }
 
+/* SLIDES */
 .slide {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;         /* 🔥 THIS IS THE KEY */
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  background: #000;
+  transition: opacity 1.2s ease-in-out;
 }
 
 .slide.active {
@@ -127,4 +124,8 @@ h1 {
   font-size: clamp(24px, 5vw, 28px);
   color: #ffb3d9;
   margin-top: 25px;
+}
+.btn {
+  position: relative;
+  z-index: 10;
 }
