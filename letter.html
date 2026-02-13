@@ -2,22 +2,38 @@
 <html>
 <head>
   <title>My Letter 💌</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<audio autoplay loop src="music.m4a"></audio>
-
 <div class="hero">
-  <img src="teddy-hug.gif" class="teddy floating">
+  <img src="./teddy-hands.gif" class="teddy floating">
 
   <h1>My Love Letter 💞</h1>
 
-  <div class="msg type" id="typeText"></div>
+  <div class="msg type" id="typeText">
+    <!-- typing text appears here -->
+  </div>
+
+  <!-- CLICK TO START MUSIC -->
+  <button class="btn yes" onclick="playMusic()">
+    Tap to Feel My Heart 💗
+  </button>
+
+  <audio id="bgMusic" loop>
+    <source src="./music.mp3" type="audio/mpeg">
+  </audio>
 
   <a href="memories.html" class="btn yes">Our Memories 💖</a>
 </div>
 
-<script src="script.js"></script>
+<script src="./script.js"></script>
+
+<script>
+function playMusic(){
+  document.getElementById("bgMusic").play();
+}
+</script>
+
 </body>
 </html>
