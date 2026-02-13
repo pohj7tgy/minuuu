@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Question 💝</title>
+  <meta charset="UTF-8">
+  <title>The Question 💝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="center">
+<body>
 
-  <img src="teddy-hands.gif" class="teddy" id="teddy">
+<div class="center">
+  <h1>Minuu jii 💖</h1>
 
-  <div class="typewriter">
-    Minuu jii…  
+  <p class="msg">
     Will you be my Valentine? 🌹💝
+  </p>
+
+  <img src="teddy-hands.gif" class="teddy" alt="Teddy Love">
+
+  <div class="button-box">
+    <button class="btn yes" onclick="goYes()">YES 💖</button>
+    <button class="btn no" id="noBtn">NO ❌</button>
   </div>
+</div>
 
-  <button class="btn yes" onclick="location.href='letter.html'">YES 💖</button>
-  <button class="btn no" id="noBtn">NO ❌</button>
-
-  <audio id="music" src="music.m4a" autoplay loop></audio>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
