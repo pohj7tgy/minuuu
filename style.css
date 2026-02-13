@@ -1,9 +1,11 @@
+/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* BODY */
 body {
   min-height: 100vh;
   background: radial-gradient(circle at top, #1a001f, #000);
@@ -13,29 +15,42 @@ body {
   overflow-x: hidden;
 }
 
+/* CENTER WRAPPER */
 .center {
   min-height: 100vh;
-  padding: 25px 16px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 22px;
 }
 
+/* HEADINGS */
 h1 {
   font-size: 34px;
   color: #ff4da6;
   text-shadow: 0 0 20px #ff4da6;
 }
 
-.msg, .typewriter {
+/* TEXT */
+.msg,
+.typewriter {
   font-size: 26px;
   line-height: 1.8;
   max-width: 95%;
   color: #ffe6f2;
 }
 
+/* BUTTON BOX */
+.button-box {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  margin-top: 20px;
+}
+
+/* BUTTON BASE */
 .btn {
   padding: 20px 60px;
   font-size: 22px;
@@ -47,7 +62,8 @@ h1 {
   box-shadow: 0 10px 0 #000, 0 16px 30px rgba(0,0,0,0.6);
   cursor: pointer;
   text-decoration: none;
-  z-index: 10;
+  z-index: 5;
+  touch-action: manipulation;
 }
 
 .btn:active {
@@ -55,16 +71,25 @@ h1 {
   box-shadow: 0 4px 0 #000;
 }
 
+/* YES BUTTON */
 .yes {
   background: linear-gradient(145deg, #ffd6ea, #fff);
+  position: relative;
+  z-index: 10; /* ALWAYS clickable */
 }
 
+/* NO BUTTON */
 .no {
   position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: linear-gradient(145deg, #444, #111);
   color: #fff;
+  z-index: 3;
 }
 
+/* TEDDY GIF */
 .teddy {
   width: 240px;
   max-width: 90%;
@@ -72,15 +97,18 @@ h1 {
   animation: float 4s ease-in-out infinite;
 }
 
+/* FLOAT */
 @keyframes float {
-  50% { transform: translateY(-15px); }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
+/* SLIDESHOW */
 .slideshow {
   width: 94vw;
   max-width: 520px;
-  height: 70vh;
-  max-height: 680px;
+  height: 420px; /* FIXED height */
   position: relative;
   overflow: hidden;
   border-radius: 25px;
@@ -88,6 +116,7 @@ h1 {
   box-shadow: 0 0 40px rgba(255,77,166,0.6);
 }
 
+/* SLIDES */
 .slide {
   position: absolute;
   inset: 0;
@@ -102,71 +131,21 @@ h1 {
   opacity: 1;
 }
 
+/* END TEXT */
 .end {
   font-size: 26px;
   color: #ffb3d9;
 }
-.button-box {
-  position: relative;
-  width: 100%;
-  height: 120px;
-  margin-top: 20px;
-}
 
-/* FIX NO BUTTON */
-.no {
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%, -50%);
-}
-
-/* HEART BEAT ANIMATION */
+/* HEARTBEAT */
 @keyframes heartbeat {
-  0% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 15px pink);
-  }
-  25% {
-    transform: scale(1.12);
-    filter: drop-shadow(0 0 35px hotpink);
-  }
-  50% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 18px pink);
-  }
-  75% {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 45px deeppink);
-  }
-  100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 15px pink);
-  }
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.12); }
+  50%  { transform: scale(1); }
+  75%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
-/* ACTIVE HEART */
 .teddy.beat {
   animation: heartbeat 0.9s ease-in-out 3;
-    }
-.button-box {
-  position: relative;
-  width: 100%;
-  height: 160px;
-  margin-top: 20px;
-}
-
-/* YES BUTTON */
-.yes {
-  position: relative;
-  z-index: 2;   /* 🔥 ensures clickable */
-}
-
-/* NO BUTTON */
-.no {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
 }
