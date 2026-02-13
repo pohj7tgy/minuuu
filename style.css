@@ -1,46 +1,65 @@
+/* RESET */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* BODY */
 body {
-  margin: 0;
   min-height: 100vh;
   background: radial-gradient(circle at top, #1a001f, #000);
   color: #fff;
   font-family: 'Special Elite', monospace;
   text-align: center;
+  overflow-x: hidden;
 }
 
-/* PAGE LAYOUT */
+/* PAGE WRAPPER */
 .center {
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 25px 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center; /* no huge gaps */
   align-items: center;
+  gap: 18px;
 }
 
-/* TYPEWRITER TEXT */
-.typewriter {
-  font-size: 30px;
+/* HEADINGS */
+h1 {
+  font-size: 34px;
+  color: #ff4da6;
+  text-shadow: 0 0 20px #ff4da6;
+}
+
+/* TYPEWRITER / TEXT */
+.typewriter,
+.msg {
+  font-size: clamp(24px, 5vw, 30px);
+  line-height: 1.9;
   max-width: 95%;
-  line-height: 1.8;
   color: #ffe6f2;
+  margin: 20px auto;
 }
 
 /* 3D BUTTONS */
 .btn {
+  position: relative;
+  z-index: 10; /* important for tap */
   padding: 22px 60px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   border-radius: 55px;
   border: 2px solid #000;
   cursor: pointer;
   background: linear-gradient(145deg, #ffffff, #e6e6e6);
   color: #000;
-  box-shadow: 0 10px 0 #000, 0 16px 30px rgba(0,0,0,0.6);
-  margin: 20px;
+  box-shadow:
+    0 10px 0 #000,
+    0 16px 30px rgba(0,0,0,0.6);
+  margin: 15px;
+  touch-action: manipulation;
 }
 
 .btn:active {
@@ -48,43 +67,66 @@ body {
   box-shadow: 0 4px 0 #000;
 }
 
+/* YES BUTTON */
 .yes {
   background: linear-gradient(145deg, #fff, #ffd6ea);
 }
 
+/* NO BUTTON */
 .no {
   background: linear-gradient(145deg, #444, #111);
   color: #fff;
   position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* TEDDY */
+/* TEDDY GIF */
 .teddy {
   width: 260px;
+  max-width: 90%;
+  margin: 20px auto;
+  display: block;
   filter: drop-shadow(0 0 30px pink);
   animation: float 4s ease-in-out infinite;
   transition: transform 0.15s ease, filter 0.15s ease;
 }
 
+/* BIG TEDDY (optional) */
+.teddy.big {
+  width: 300px;
+}
+
+/* FLOAT ANIMATION */
 @keyframes float {
-  50% { transform: translateY(-18px); }
+  50% {
+    transform: translateY(-18px);
+  }
 }
 
 /* SLIDESHOW */
 .slideshow {
-  width: 100vw;
-  height: 100vh;          /* FULL SCREEN HEIGHT */
+  width: 92vw;
+  max-width: 420px;        /* controlled romantic size */
+  height: 420px;
+  margin: 25px auto;
   position: relative;
   overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 0 35px rgba(255,105,180,0.6);
   background: #000;
+  z-index: 1;
 }
 
+/* SLIDE IMAGE */
 .slide {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* 🔥 THIS FIXES EVERYTHING */
+  object-fit: cover;      /* FULL SCREEN COVER without empty space */
+  background: #000;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
@@ -93,7 +135,15 @@ body {
   opacity: 1;
 }
 
+/* FINAL PAGE TEXT */
 .end {
-  font-size: 26px;
+  font-size: 28px;
   color: #ffb3d9;
+  margin-top: 25px;
+}
+
+/* LINKS AS BUTTONS */
+a.btn {
+  text-decoration: none;
+  display: inline-block;
 }
