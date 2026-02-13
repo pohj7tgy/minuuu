@@ -1,38 +1,55 @@
-// ------------------------
-// TYPEWRITER EFFECT (Optional if you want messages under slide)
-const text = `Our precious moments together 💖
-Laughing, hugging, loving... 
-Every memory is my treasure 💕`;
-
-let i = 0;
-function typeText() {
-  const msg = document.querySelector(".msg");
-  if (!msg) return;
-  if (i < text.length) {
-    msg.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeText, 50);
-  }
+/* NO BUTTON ESCAPE */
+const noBtn = document.getElementById("noBtn");
+if (noBtn) {
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("touchstart", moveNo);
 }
-typeText();
 
-// ------------------------
-// SLIDESHOW LOGIC
-let slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
+function moveNo() {
+  const box = document.querySelector(".button-box");
+  const maxX = box.clientWidth - noBtn.offsetWidth;
+  const maxY = box.clientHeight - noBtn.offsetHeight;
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
+}
 
-setInterval(() => {
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add("active");
-}, 3000); // 3s per slide
+function goYes() {
+  window.location.href = "letter.html";
+}
 
-// ------------------------
-// OPTIONAL: floating teddy reacts slightly to hover
-const teddy = document.getElementById("teddy");
-teddy.addEventListener("mouseover", () => {
-  teddy.style.transform = "scale(1.05)";
-});
-teddy.addEventListener("mouseout", () => {
-  teddy.style.transform = "scale(1)";
-});
+/* TYPEWRITER TEXT */
+const text = `From the day I met you,
+my heart stopped searching…
+
+I choose you.
+Always. 💖`;
+
+const letter = document.getElementById("letterText");
+let i = 0;
+if (letter) {
+  function type() {
+    if (i < text.length) {
+      letter.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 50);
+    }
+  }
+  type();
+}
+
+/* SLIDESHOW */
+const slides = document.querySelectorAll(".slide");
+let current = 0;
+if (slides.length) {
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 3000);
+}
+
+/* HEARTBEAT BUTTON */
+function heartbeat() {
+  document.getElementById("heartMsg").innerText =
+    "💓 Lub-dub… Lub-dub… this heart beats only for you 💖";
+}
