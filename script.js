@@ -1,13 +1,9 @@
-/* =========================
-   YES BUTTON NAVIGATION
-========================= */
+/* YES BUTTON */
 function goYes() {
   window.location.href = "letter.html";
 }
 
-/* =========================
-   NO BUTTON ESCAPE
-========================= */
+/* NO BUTTON ESCAPE */
 const noBtn = document.getElementById("noBtn");
 
 if (noBtn) {
@@ -16,14 +12,12 @@ if (noBtn) {
 }
 
 function moveNo() {
-  const x = Math.random() * 220 - 110;
-  const y = Math.random() * 140 - 70;
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 120 - 60;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-/* =========================
-   TYPEWRITER EFFECT
-========================= */
+/* TYPEWRITER (LETTER PAGE) */
 const letter = document.getElementById("letterText");
 const text = `From the day I met you,
 my heart stopped searching…
@@ -33,7 +27,6 @@ Always. 💖`;
 
 let i = 0;
 if (letter) {
-  letter.innerHTML = "";
   function type() {
     if (i < text.length) {
       letter.innerHTML += text.charAt(i);
@@ -44,14 +37,11 @@ if (letter) {
   type();
 }
 
-/* =========================
-   SLIDESHOW
-========================= */
+/* SLIDESHOW */
 const slides = document.querySelectorAll(".slide");
 let current = 0;
 
-if (slides.length > 1) {
-  slides[0].classList.add("active");
+if (slides.length) {
   setInterval(() => {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
@@ -59,20 +49,12 @@ if (slides.length > 1) {
   }, 3000);
 }
 
-/* =========================
-   HEART BEAT (FOREVER PAGE)
-========================= */
+/* HEART BEAT BUTTON */
 function feelHeart() {
   const teddy = document.getElementById("heartTeddy");
-  const msg = document.getElementById("heartMsg");
+  if (!teddy) return;
 
-  if (teddy) {
-    teddy.classList.remove("beat");
-    void teddy.offsetWidth; // restart animation
-    teddy.classList.add("beat");
-  }
-
-  if (msg) {
-    msg.innerText = "💓 Lub-dub… Lub-dub… this heart beats only for you 💖";
-  }
+  teddy.classList.remove("beat");
+  void teddy.offsetWidth; // restart animation
+  teddy.classList.add("beat");
 }
