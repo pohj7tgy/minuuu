@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Forever ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="center">
+<body>
 
-  <img src="teddy-sleep.gif" class="teddy" id="teddy">
+<div class="center">
+  <h1>Forever & Always ❤️</h1>
 
-  <div class="typewriter" id="typeText"
-    data-text="You are my Valentine.
-Today.
-Tomorrow.
-Forever. ❤️">
-  </div>
+  <img src="teddy4.gif" class="teddy">
 
-  <button class="btn yes" id="startMusic">
-    Tap to Feel My Heart 💓
-  </button>
+  <p class="msg">
+    You are my Valentine.<br>
+    Today. Tomorrow. Forever. 💖
+  </p>
 
-  <div class="end">Forever & Always 💕</div>
+  <button class="btn yes" onclick="heartbeat()">Feel My Heartbeat 💓</button>
 
-  <audio id="music" src="music.m4a" loop></audio>
-  <script src="script.js"></script>
+  <p id="heartMsg" class="end"></p>
+</div>
+
+<audio autoplay loop src="music.m4a"></audio>
+
+<script src="script.js"></script>
 </body>
 </html>
